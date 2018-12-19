@@ -89,8 +89,8 @@ def answer(message):
                 for i in model.most_similar(positive=[tag_words[0]], topn=10):
                 # слово + коэффициент косинусной близости
                     word2 = i[0][:i[0].find('_')]
-                    res_word = same_form(words[0], word2)
-                    msg += str(res_word) + ' ' + str(i[1]) + '\n'
+                    #res_word = same_form(words[0], word2)
+                    msg += str(word2) + ' ' + str(i[1]) + '\n'
                 bot.send_message(message.chat.id, msg)
             else:
                 bot.send_message(message.chat.id, 'Слово ' + str(words[0]) + ' отсутствует в модели :(')
