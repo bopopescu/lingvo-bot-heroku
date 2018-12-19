@@ -6,7 +6,7 @@ import pymorphy2
 import re
 import json
 
-model = gensim.models.Word2Vec.load('word2vec11.model')
+model = gensim.models.Word2Vec.load('word2vec7.model')
 model.init_sims(replace=True)
 
 TOKEN = '782488600:AAGCguW2x4jfUE8wNiaxwKkQbWRbyAQ0PWs'
@@ -42,7 +42,6 @@ def same_form(word1, word2):
             if cur > max:
                 max = cur
                 res = lex.word
-                print()
     return res
 
 @bot.message_handler(func=lambda message: str(message.text).startswith('Режим'))
@@ -50,15 +49,12 @@ def answer(message):
 
     if message.text.lower() == 'режим ближайших соседей слова':
         users[str(message.chat.id)] = 1
-        print(users[str(message.chat.id)])
         bot.send_message(message.chat.id, 'Режим ближайших соседей слова включен')
     elif message.text.lower() == 'режим лишнего слова в списке':
         users[str(message.chat.id)] = 2
-        print(users[str(message.chat.id)])
         bot.send_message(message.chat.id, 'Режим лишнего слова в списке включен')
     elif message.text.lower() == 'режим схожести двух слов':
         users[str(message.chat.id)] = 3
-        print(users[str(message.chat.id)])
         bot.send_message(message.chat.id, 'Режим схожести двух слов включен')
 
 @bot.message_handler(commands=['start'])
@@ -93,7 +89,6 @@ def answer(message):
                 for i in model.most_similar(positive=[tag_words[0]], topn=10):
                 # слово + коэффициент косинусной близости
                     word2 = i[0][:i[0].find('_')]
-                    print(tag_words[0],word2)
                     res_word = same_form(words[0], word2)
                     msg += str(res_word) + ' ' + str(i[1]) + '\n'
                 bot.send_message(message.chat.id, msg)
