@@ -9,7 +9,7 @@ import json
 model = gensim.models.Word2Vec.load('word2vec20.model')
 model.init_sims(replace=True)
 
-TOKEN = '782488600:AAGCguW2x4jfUE8wNiaxwKkQbWRbyAQ0PWs'
+TOKEN = '708437164:AAFGnigA8oA0ccsUPzFNGNWkAi4kbPE-hDU'
 
 logger = telebot.logger
 telebot.logger.setLevel(logging.INFO)
