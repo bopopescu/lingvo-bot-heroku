@@ -23,7 +23,6 @@ itembtn2 = types.KeyboardButton('Режим лишнего слова в спи�
 itembtn3 = types.KeyboardButton('Режим схожести двух слов')
 markup.add(itembtn1, itembtn2, itembtn3)
 
-markup.one_time_keyboard = True
 
 users = {}
 
